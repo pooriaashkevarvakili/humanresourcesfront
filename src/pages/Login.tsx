@@ -33,7 +33,7 @@ console.log(import.meta.env.VITE_RECAPTCHA_SITE_KEY);
       toast.success("ورود با موفقیت انجام شد");
 
       setTimeout(() => {
-        navigate("/layout/dashboard");
+        navigate("/layout/managerDashboard");
       }, 800);
     },
     onError: (error: any) => {

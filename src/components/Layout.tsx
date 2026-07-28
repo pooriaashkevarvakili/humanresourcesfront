@@ -63,9 +63,9 @@ export default function Layout() {
       
           items={[
             {
-              key: "/layout/dashboard",
+              key: "/layout/managerDashboard",
               icon: <RiDashboardFill />,
-              label: <Link to="/layout/dashboard">داشبورد</Link>,
+              label: <Link to="/layout/managerDashboard">داشبورد</Link>,
             },
 
           ]}

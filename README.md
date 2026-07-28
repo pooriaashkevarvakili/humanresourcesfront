@@ -1,75 +1,86 @@
-# React + TypeScript + Vite
+# new-project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React + TypeScript project built with Vite, using Tailwind CSS v4, Ant Design, React Query, React Hook Form, and a rich set of UI/utility libraries.
 
-Currently, two official plugins are available:
+## Project Info
+- **Name:** `new-project`
+- **Private:** `true`
+- **Version:** `0.0.0`
+- **Module Type:** `module`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Scripts
+- `dev` — start the development server with Vite.
+- `build` — run TypeScript build and create production bundle.
+- `lint` — run ESLint across the project.
+- `preview` — preview the production build locally.
 
-## React Compiler
+## Main Dependencies
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Core Framework
+- `react`
+- `react-dom`
+- `react-router-dom`
 
-## Expanding the ESLint configuration
+### State / Data Fetching
+- `@tanstack/react-query`
+- `react-query`
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Forms & Validation
+- `react-hook-form`
+- `@hookform/resolvers`
+- `yup`
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### UI & Styling
+- `antd`
+- `tailwindcss`
+- `@tailwindcss/vite`
+- `react-icons`
+- `react-responsive`
+- `react-toastify`
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Charts & Visualization
+- `apexcharts`
+- `react-apexcharts`
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Dates & Calendars
+- `date-fns`
+- `date-fns-jalali`
+- `dayjs`
+- `jalaliday`
+- `moment`
+- `react-datepicker`
+- `react-multi-date-picker`
 
-```
+### Networking & Utilities
+- `axios`
+- `dotenv`
+- `react-google-recaptcha`
+- `@types/react-google-recaptcha`
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Dev Dependencies
+- `typescript`
+- `vite`
+- `@vitejs/plugin-react`
+- `eslint`
+- `@eslint/js`
+- `typescript-eslint`
+- `eslint-plugin-react-hooks`
+- `eslint-plugin-react-refresh`
+- `globals`
+- `@types/node`
+- `@types/react`
+- `@types/react-dom`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Notes
+- This setup is well-suited for building a **professional dashboard or SaaS product**.
+- The combination of **Ant Design + Tailwind CSS** gives flexibility for both rapid UI development and custom styling.
+- The date libraries suggest support for **Jalali/Persian date handling**.
+- The chart libraries are useful for analytics dashboards, reports, and KPI screens.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+## Best Fit
+This package is a strong fit for:
+- HR ERP systems
+- Admin panels
+- SaaS dashboards
+- CRM or internal business tools
+- Reporting and analytics applications

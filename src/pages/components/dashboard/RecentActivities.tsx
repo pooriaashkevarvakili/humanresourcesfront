@@ -21,11 +21,7 @@ const RecentActivities: React.FC<RecentActivitiesProps> = ({ activities }) => {
         </Space>
       }
       className="shadow-sm border-0 h-full"
-      extra={
-        <Button type="link" size="small" onClick={handleViewAll}>
-          مشاهده همه
-        </Button>
-      }
+    
     >
       <List
         dataSource={activities}

@@ -17,7 +17,7 @@ import {
   SearchOutlined,
   FilterOutlined,
 } from '@ant-design/icons';
-import type { PlanItem } from '../../types/dashboard';
+import type { PlanItem } from '../../../types/dashboard';
 
 const { Text } = Typography;
 
@@ -73,14 +73,7 @@ const SubscriptionPlans: React.FC<SubscriptionPlansProps> = ({ plans }) => {
             >
               جستجو
             </Button>
-            <Button
-              type="text"
-              size="small"
-              icon={<FilterOutlined />}
-              onClick={() => setIsFilterModalOpen(true)}
-            >
-              فیلتر
-            </Button>
+           
           </Space>
         }
       >

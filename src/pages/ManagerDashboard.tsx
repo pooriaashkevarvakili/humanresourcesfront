@@ -28,22 +28,12 @@ const ManagerDashboard: React.FC = () => {
             </Title>
             <Text type="secondary">خلاصه عملکرد، درآمد و وضعیت سیستم</Text>
           </Col>
-          <Col>
-            <Space>
-              <Badge count={5}>
-                <Button type="text" icon={<BellOutlined />} />
-              </Badge>
-              <Button type="text" icon={<SettingOutlined />} />
-              <Avatar style={{ backgroundColor: '#1890ff' }}>مدیر</Avatar>
-            </Space>
-          </Col>
+
         </Row>
       </div>
 
-      {/* Stats */}
       <StatsCards stats={statsMock} quickStats={quickStatsMock} />
 
-      {/* Chart + Activities */}
       <Row gutter={[16, 16]} className="mb-6">
         <Col xs={24} lg={16}>
           <RevenueChart />

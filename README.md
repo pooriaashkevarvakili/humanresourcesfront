@@ -1,4 +1,4 @@
-# new-project
+# human-resources-front
 
 A modern React + TypeScript project built with Vite, using Tailwind CSS v4, Ant Design, React Query, React Hook Form, and a rich set of UI/utility libraries.
 

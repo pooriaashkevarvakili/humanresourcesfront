@@ -1,1 +1,14 @@
 @import "tailwindcss";
+@font-face {
+  font-family: "Vazirmatn" !important;
+  src: url("/fonts/vazir-font-v16.1.0/Vazir-Thin.ttf") format("ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  direction: rtl;
+  font-family: "Vazirmatn", sans-serif !important;
+  background-color: #f5f5f5;
+}

@@ -15,7 +15,14 @@ import Signup from "./pages/Signup";
 
 function App() {
   return (
-    <ConfigProvider direction="rtl" locale={faIR}>
+    <ConfigProvider 
+      theme={{
+    token: {
+      fontFamily: "Vazirmatn, sans-serif",
+    },
+  }}
+    
+    direction="rtl" locale={faIR}>
       <Router>
         <Routes>
           <Route path="/" element={<Navigate to="/login" replace />} />

@@ -6,7 +6,6 @@ import {
   Avatar,
   Button,
   Badge,
-  List,
   Tag,
   Progress,
   Space,
@@ -19,7 +18,7 @@ import {
   message,
   Divider,
   Typography,
-} from 'antd';
+} from 'antd'; // ← List حذف شد
 import {
   UserOutlined,
   CalendarOutlined,
@@ -68,12 +67,10 @@ const EmployeeDashboard: React.FC = () => {
   const [leaveRequestForm] = Form.useForm();
 
   // ========== Refs برای دانلود PDF ==========
-  // نوع RefObject<HTMLDivElement | null> به‌درستی تعریف شده است
   const payslipRef = useRef<HTMLDivElement>(null);
   const modalPayslipRef = useRef<HTMLDivElement>(null);
 
   // ========== تابع دانلود PDF ==========
-  // پذیرش RefObject با قابلیت null
   const downloadPDF = (elementRef: React.RefObject<HTMLDivElement | null>, filename: string = 'payslip.pdf') => {
     if (!elementRef.current) {
       message.error('محتوایی برای دانلود وجود ندارد');
@@ -81,7 +78,6 @@ const EmployeeDashboard: React.FC = () => {
     }
     const element = elementRef.current;
     
-    // استفاده از html2pdf که از CDN بارگذاری شده است
     // @ts-ignore
     window.html2pdf()
       .set({
@@ -362,16 +358,16 @@ const EmployeeDashboard: React.FC = () => {
             }
             className="shadow-sm border-0"
             style={{ flex: 1, display: 'flex', flexDirection: 'column' }}
-            bodyStyle={{ flex: 1, display: 'flex', flexDirection: 'column' }}
+            styles={{ body: { flex: 1, display: 'flex', flexDirection: 'column' } }} // ← اصلاح bodyStyle
           >
             <Chart options={attendanceOptions} series={attendanceSeries} type="bar" height={220} />
             <div style={{ flex: 1, marginTop: 16 }}>
-              <List
-                dataSource={attendanceRecords.slice(-5).reverse()}
-                renderItem={(record: AttendanceRecord) => {
+              {/* جایگزین کردن List با div و map */}
+              <div className="space-y-1">
+                {attendanceRecords.slice(-5).reverse().map((record: AttendanceRecord) => {
                   const st = getAttendanceStatus(record.status);
                   return (
-                    <List.Item className="border-b border-gray-100 last:border-0 py-2">
+                    <div key={record.date} className="border-b border-gray-100 last:border-0 py-2">
                       <div className="flex items-center justify-between w-full">
                         <Space>
                           <Tag icon={st.icon} color={st.color} className="text-xs">
@@ -383,10 +379,10 @@ const EmployeeDashboard: React.FC = () => {
                           {record.checkIn} — {record.checkOut}
                         </span>
                       </div>
-                    </List.Item>
+                    </div>
                   );
-                }}
-              />
+                })}
+              </div>
             </div>
           </Card>
         </Col>
@@ -483,30 +479,34 @@ const EmployeeDashboard: React.FC = () => {
             }
             className="shadow-sm border-0"
             style={{ flex: 1, display: 'flex', flexDirection: 'column' }}
-            bodyStyle={{ flex: 1, display: 'flex', flexDirection: 'column', padding: 0 }}
+            styles={{ body: { flex: 1, display: 'flex', flexDirection: 'column', padding: 0 } }} // ← اصلاح bodyStyle
           >
-            <List
-              dataSource={notifications}
-              style={{ flex: 1, overflow: 'auto', padding: '8px 16px' }}
-              renderItem={(item: Notification) => (
-                <List.Item className="border-b border-gray-100 last:border-0 py-3">
-                  <div className="flex items-start gap-3 w-full">
-                    <div className="mt-1">{getNotificationIcon(item.type)}</div>
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between">
-                        <span className={`font-medium text-sm ${item.read ? 'text-gray-500' : 'text-gray-800'}`}>
-                          {item.title}
-                        </span>
-                        {!item.read && <Badge color="blue" />}
+            <div style={{ flex: 1, overflow: 'auto', padding: '8px 16px' }}>
+              {/* جایگزین کردن List با div و map */}
+              {notifications.length > 0 ? (
+                <div className="space-y-1">
+                  {notifications.map((item: Notification) => (
+                    <div key={item.id} className="border-b border-gray-100 last:border-0 py-3">
+                      <div className="flex items-start gap-3 w-full">
+                        <div className="mt-1">{getNotificationIcon(item.type)}</div>
+                        <div className="flex-1">
+                          <div className="flex items-center justify-between">
+                            <span className={`font-medium text-sm ${item.read ? 'text-gray-500' : 'text-gray-800'}`}>
+                              {item.title}
+                            </span>
+                            {!item.read && <Badge color="blue" />}
+                          </div>
+                          <p className="text-xs text-gray-500 mt-1">{item.message}</p>
+                          <span className="text-xs text-gray-400 mt-1 block">{item.time}</span>
+                        </div>
                       </div>
-                      <p className="text-xs text-gray-500 mt-1">{item.message}</p>
-                      <span className="text-xs text-gray-400 mt-1 block">{item.time}</span>
                     </div>
-                  </div>
-                </List.Item>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center text-gray-400 py-8">اعلانی وجود ندارد</div>
               )}
-              locale={{ emptyText: 'اعلانی وجود ندارد' }}
-            />
+            </div>
           </Card>
         </Col>
       </Row>

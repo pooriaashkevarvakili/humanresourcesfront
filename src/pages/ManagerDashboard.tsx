@@ -13,7 +13,7 @@ const { Content } = Layout;
 
 type Role = 'hr-admin' | 'manager' | 'employee';
 
-const App: React.FC = () => {
+const ManagerDashboardPages: React.FC = () => {
   const [activeRole, setActiveRole] = useState<Role>('hr-admin');
 
   const tabItems = [
@@ -56,7 +56,7 @@ const App: React.FC = () => {
           activeKey={activeRole}
           onChange={(key) => setActiveRole(key as Role)}
           items={tabItems}
-          tabPosition="top"
+          tabPlacement="top"   
           size="large"
           centered
           animated={{ inkBar: true, tabPane: true }}
@@ -72,4 +72,4 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default ManagerDashboardPages;

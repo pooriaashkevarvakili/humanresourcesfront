@@ -1,4 +1,10 @@
+// Types/types.ts
 
+import type { ReactNode } from 'react';
+
+/* ========================
+   Core Domain Models
+======================== */
 
 export interface Employee {
   id: string;
@@ -22,6 +28,15 @@ export interface LeaveRequest {
   status: 'pending' | 'approved' | 'rejected';
   reason?: string;
   requestedAt: string;
+}
+
+export interface LeaveRequestPending {
+  id: string;
+  employeeName: string;
+  startDate: string;
+  endDate: string;
+  days: number;
+  reason: string;
 }
 
 export interface PayrollAlert {
@@ -101,3 +116,89 @@ export interface DashboardStats {
   payrollAlerts: number;
 }
 
+/* ========================
+   Component Props
+======================== */
+
+export interface AttendanceStatsProps {
+  presentCount: number;
+  wfhCount: number;
+  onLeaveCount: number;
+  absentCount: number;
+  filterStatus: string | null;
+  onStatusFilter: (status: string) => void;
+}
+
+export interface TeamMembersTableProps {
+  filteredMembers: TeamMember[];
+  searchText: string;
+  setSearchText: (text: string) => void;
+  filterStatus: string | null;
+  setFilterStatus: (status: string | null) => void;
+  showMemberDetail: (memberId: string) => void;
+  statusConfig: Record<
+    string,
+    {
+      color: string;
+      icon: ReactNode;
+      text: string;
+      bg: string;
+    }
+  >;
+}
+/* ========================
+   Stats Cards (Manager Dashboard)
+======================== */
+export interface ActivityItem {
+  icon: React.ReactNode;
+  title: string;
+  time: string;
+}
+export interface PlanItem {
+  name: string;
+  users: number;
+  revenue: number;
+  growth: string;
+  color: string;
+  icon: React.ReactNode;
+}
+
+
+
+
+
+
+
+
+
+export interface ActivityItem {
+  icon: React.ReactNode;
+  title: string;
+  time: string;
+}
+
+export interface PlanItem {
+  name: string;
+  users: number;
+  revenue: number;
+  growth: string;
+  color: string;
+  icon: React.ReactNode;
+}
+
+export interface StatItem {
+  title: string;
+  value: number | string;
+  icon: React.ReactNode;
+  color?: string;
+  change?: string | number;
+}
+
+export type ChartPeriod = 'weekly' | 'monthly' | 'yearly';
+
+export interface QuickStat {
+  label: string;
+  value: string;
+  change: string;
+  color: string;
+}

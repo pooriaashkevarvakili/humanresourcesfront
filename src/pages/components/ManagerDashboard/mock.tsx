@@ -1,5 +1,21 @@
-
-
+import React from 'react';
+import {
+  UserOutlined,
+  UserAddOutlined,
+  ClockCircleOutlined,
+  AlertOutlined,
+  DollarOutlined,
+  TeamOutlined,
+  CheckCircleOutlined,
+  CloseCircleOutlined,
+  HomeOutlined,
+  QuestionCircleOutlined,
+  RiseOutlined,
+  FallOutlined,
+  FileTextOutlined,
+  CheckOutlined,
+  WarningOutlined,
+} from '@ant-design/icons';
 import type {
   Employee,
   LeaveRequest,
@@ -13,8 +29,13 @@ import type {
   PerformanceReview,
   Notification,
   DashboardStats,
+  StatItem,
+  QuickStat,
+  ActivityItem,
+  PlanItem,
 } from './Types/types';
 
+// ---------- Original data (kept unchanged) ----------
 export const dashboardStats: DashboardStats = {
   totalEmployees: 248,
   newHires: 12,
@@ -115,3 +136,141 @@ export const leaveBalance = {
   unpaid: { total: 30, used: 0, remaining: 30 },
 };
 
+// ---------- NEW: Mock data for ManagerDashboard (arrays) ----------
+
+// StatItem[]
+export const statsMock: StatItem[] = [
+  {
+    title: 'کل کارمندان',
+    value: dashboardStats.totalEmployees,
+    icon: <UserOutlined />,
+    color: '#1890ff',
+    change: '+5%',
+  },
+  {
+    title: 'استخدام‌های جدید',
+    value: dashboardStats.newHires,
+    icon: <UserAddOutlined />,
+    color: '#52c41a',
+    change: '+2',
+  },
+  {
+    title: 'درخواست‌های مرخصی',
+    value: dashboardStats.pendingLeaves,
+    icon: <ClockCircleOutlined />,
+    color: '#faad14',
+    change: '-1',
+  },
+  {
+    title: 'هشدارهای حقوق',
+    value: dashboardStats.payrollAlerts,
+    icon: <AlertOutlined />,
+    color: '#ff4d4f',
+    change: 'نیاز به بررسی',
+  },
+  {
+    title: 'درآمد کل',
+    value: '۱,۲۵۰,۰۰۰,۰۰۰',
+    icon: <DollarOutlined />,
+    color: '#722ed1',
+    change: '+۱۲٪',
+  },
+  {
+    title: 'اشتراک‌های فعال',
+    value: 124,
+    icon: <TeamOutlined />,
+    color: '#13c2c2',
+    change: '+۸',
+  },
+];
+
+// QuickStat[]
+export const quickStatsMock: QuickStat[] = [
+  {
+    label: 'حضور امروز',
+    value: '۱۸۶',
+    change: '+۱۲',
+    color: '#52c41a',
+  },
+  {
+    label: 'مرخصی امروز',
+    value: '۱۲',
+    change: '-۲',
+    color: '#faad14',
+  },
+  {
+    label: 'غیبت',
+    value: '۸',
+    change: '۰',
+    color: '#ff4d4f',
+  },
+  {
+    label: 'دورکاری',
+    value: '۴۲',
+    change: '+۵',
+    color: '#1890ff',
+  },
+  {
+    label: 'در انتظار تأیید',
+    value: '۵',
+    change: '+۱',
+    color: '#722ed1',
+  },
+];
+
+// ActivityItem[]
+export const activitiesMock: ActivityItem[] = [
+  {
+    icon: <UserAddOutlined style={{ color: '#1890ff' }} />,
+    title: 'علی احمدی درخواست مرخصی ثبت کرد',
+    time: '۲۰ دقیقه پیش',
+  },
+  {
+    icon: <CheckOutlined style={{ color: '#52c41a' }} />,
+    title: 'مریم رضایی درخواست استخدام را تأیید کرد',
+    time: '۱ ساعت پیش',
+  },
+  {
+    icon: <FileTextOutlined style={{ color: '#722ed1' }} />,
+    title: 'حسن محمدی گزارش عملکرد ارسال کرد',
+    time: '۳ ساعت پیش',
+  },
+  {
+    icon: <DollarOutlined style={{ color: '#13c2c2' }} />,
+    title: 'واریز حقوق تیر انجام شد',
+    time: '۵ ساعت پیش',
+  },
+  {
+    icon: <WarningOutlined style={{ color: '#faad14' }} />,
+    title: 'رضا نوری وضعیت خود را به مرخصی تغییر داد',
+    time: 'دیروز',
+  },
+];
+
+// PlanItem[]
+export const plansMock: PlanItem[] = [
+  {
+    name: 'رایگان',
+    users: 10,
+    revenue: 0,
+    growth: '۰٪',
+    color: '#d9d9d9',
+    icon: <TeamOutlined />,
+  },
+  {
+    name: 'حرفه‌ای',
+    users: 50,
+    revenue: 350000,
+    growth: '+۱۵٪',
+    color: '#1890ff',
+    icon: <RiseOutlined />,
+  },
+  {
+    name: 'سازمانی',
+    users: 200,
+    revenue: 850000,
+    growth: '+۲۵٪',
+    color: '#722ed1',
+    icon: <TeamOutlined />,
+  },
+];
